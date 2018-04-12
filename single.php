@@ -1,5 +1,4 @@
 <?php
-	
     echo "singleton设计模式(对象方式)\n";  
     class SaleMan {
            private   $name;
@@ -25,70 +24,35 @@
            function setService($service){
                   $this->service = $service;
            }
+    }
 
-     }
-
-      
-
-       class  ServiceManager {
-
+    class  ServiceManager {
            private $saleMan = null;
-
- 
-
            function __construct($saleMan){
-
                $this->saleMan = $saleMan;               
-
            }
-
- 
 
            function getSaleManService(){
-
-                  if ( !empty($this->saleMan) )
-
-                        return $this->saleMan;
-
-                  return $this->saleMan;
-
+                if ( !empty($this->saleMan) ) return $this->saleMan;
+				
+				return $this->saleMan;
            }
+    }  
+ 	/*  程序开始运行  */
+    echo "——————程序开始运行.————————\n";  
+    $saleMan = new SaleMan("小刘", "小刘的服务\n");
+    $service  = new ServiceManager($saleMan);
 
-     }  
- /*  程序开始运行  */
+    echo  "第一次获得服务：\n";
+    $saleman  = $service->getSaleManService();       
+	echo  $saleman->getService();
 
-     echo "——————程序开始运行.————————\n";  
+    echo  "第二次获得服务：\n";
+    $saleman  = $service->getSaleManService();
+    echo  $saleman->getService();
 
-  
+    echo  "第三次获得服务：\n";
+    $saleman  = $service->getSaleManService();
+    echo  $saleman->getService();
 
-     $saleMan = new SaleMan("小刘", "小刘的服务\n");
-
-       $service  = new ServiceManager($saleMan);
-
-             
-
-       echo  "第一次获得服务：\n";
-
-       $saleman  = $service->getSaleManService();       
-
-       echo  $saleman->getService();
-
-             
-
-       echo  "第二次获得服务：\n";
-
-       $saleman  = $service->getSaleManService();
-
-       echo  $saleman->getService();
-
-             
-
-       echo  "第三次获得服务：\n";
-
-       $saleman  = $service->getSaleManService();
-
-       echo  $saleman->getService();
-
- 
-
-     echo "——————程序运行结束.————————\n";   
+    echo "——————程序运行结束.————————\n";   
